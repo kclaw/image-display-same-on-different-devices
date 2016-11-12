@@ -1,0 +1,9 @@
+<!doctype>
+<html>
+    <head>
+        <title>Display an image in same on devices</title>
+    </head>
+    <body>
+        <img alt="demo">
+    </body>
+</html>
