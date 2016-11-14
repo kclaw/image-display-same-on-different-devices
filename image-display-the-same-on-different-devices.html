@@ -1,9 +1,47 @@
 <!doctype>
 <html>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
     <head>
         <title>Display an image in same on devices</title>
+        <style>
+            body {
+                width: 100%;
+                background-color: aqua;
+            }
+            img {
+                width: 100%;
+            }
+        </style>
     </head>
     <body>
-        <img alt="demo">
+        <button onclick="javascript:window.location.reload(true);">Reload</button>
+        <img alt="This is  first demostration of an image ..." src="bw-320.jpg" srcset="bw-640.jpg 2x,bw-2560.jpg 3x">
+        browsers display a non-blurry image only if the image is filled with pixels according to increase on device-pixel ratio which
+        equals to physical pixel over logical pixel. In other words, resolution of the image should be positive proportional to device-pixel ratio so that it can keep its quality.
+        <hr/>
+        <picture>
+            <source media="print" srcset="bw-320.jpg">
+            <source media="(max-width: 320px)"
+                srcset="bw-320.jpg">
+            <source media="(max-width: 640px)"
+                srcset="bw-640.jpg">
+            <source media="(max-width: 1280px)"
+                srcset="bw-1280.jpg">
+            <img src="bw-2560.jpg"
+                alt="This is second demonstration">
+        </picture>
+        browsers determine source of image based on width of viewport.
+        ref:http://responsiveimages.org/demos/basic-implementation/index.html
+        <hr/>
+
+        <img src="bw-2560.jpg"
+            srcset="bw-320.jpg 320w,bw-640.jpg 640w,bw-1280.jpg 1280w,bw-2560.jpg 2560w"
+            sizes="90vw"
+        alt="A very exciting yacht race.">
+        this demostration just likes the first one. it calculates device-pixel ratio by itself with provision of image width.
+        ref:https://css-tricks.com/responsive-images-youre-just-changing-resolutions-use-srcset/
+        <hr/>
     </body>
 </html>
