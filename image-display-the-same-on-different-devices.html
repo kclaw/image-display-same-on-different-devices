@@ -21,7 +21,7 @@
         <img alt="This is  first demostration of an image ..." src="bw-320.jpg" srcset="bw-640.jpg 2x,bw-2560.jpg 3x">
         browsers display a non-blurry image only if the image is filled with pixels according to increase on device-pixel ratio which
         equals to physical pixel over logical pixel. In other words, resolution of the image should be positive proportional to device-pixel ratio so that it can keep its quality.
-        <hr/>
+        <hr>
         <picture>
             <source media="print" srcset="bw-320.jpg">
             <source media="(max-width: 320px)"
@@ -33,9 +33,9 @@
             <img src="bw-2560.jpg"
                 alt="This is second demonstration">
         </picture>
-        browsers determine source of image based on width of viewport.
+        browsers determine source of image based on width of viewport. the change of image triggers when breakpoint is reached.
         ref:http://responsiveimages.org/demos/basic-implementation/index.html
-        <hr/>
+        <hr>
 
         <img src="bw-2560.jpg"
             srcset="bw-320.jpg 320w,bw-640.jpg 640w,bw-1280.jpg 1280w,bw-2560.jpg 2560w"
@@ -43,8 +43,20 @@
         alt="A very exciting yacht race.">
         this demostration just likes the first one. it calculates device-pixel ratio by itself with provision of image width.
         ref:https://css-tricks.com/responsive-images-youre-just-changing-resolutions-use-srcset/
-        <hr/>
+        <hr>
         brief review:
         the performance of code have differences in different browsers. in chrome desktop, it tends to download largest image from srcset(not validated) but in firefox it performs as expected.
+        <hr>
+        To combine wuth above case, it should be complete to deal with image loading optimazation.
+        with consideration of dpr and viewport width, image source can be determined.
+        <hr>
+        <picture>
+            <source media="(max-width: 320px)" srcset="bw-320.jpg 1x,bw-640.jpg 2x,bw-1280.jpg 3x,bw-2560.jpg 4x">
+            <source media="(max-width: 640px)" srcset="bw-640.jpg 1x,bw-1280.jpg 2x,bw-2560.jpg 3x">
+            <source media="(max-width: 1280px)" srcset="bw-1280.jpg 1x,bw-2560.jpg 2x">
+            <img/>
+        </picture>
+        <hr>
+        The code shows an image that can be changed without quality problem.
     </body>
 </html>
